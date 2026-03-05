@@ -147,3 +147,240 @@ pip install captcha pillow
 ```
 
 ---
+
+# Water Jug Problem – Search Algorithm Comparison
+
+This project solves the classic **Water Jug Problem** using multiple **Artificial Intelligence search algorithms** and compares their performance.
+
+The goal is to measure **4 liters of water** using:
+
+- Jug 1 capacity: **5L**
+- Jug 2 capacity: **3L**
+
+The project implements and compares the following search algorithms:
+
+- Breadth-First Search (BFS)
+- Depth-First Search (DFS)
+- Depth-Limited Search (DLS)
+- Iterative Deepening Search (IDS)
+
+The program also measures:
+
+- number of nodes explored
+- execution time
+- solution path
+
+---
+
+# Project Structure
+
+```
+.
+├── water_jug
+  ├── water_jug.py
+  ├── search_algorithms.py
+  └── compare_performance.py
+```
+
+### File Descriptions
+
+**water_jug.py**
+
+Defines the **Water Jug Problem** environment including:
+
+- jug capacities
+- initial state
+- goal test
+- successor state generation
+
+---
+
+**search_algorithms.py**
+
+Implements the following **AI search algorithms**:
+
+- BFS (Breadth-First Search)
+- DFS (Depth-First Search)
+- DLS (Depth-Limited Search)
+- IDS (Iterative Deepening Search)
+
+Also defines a **Node class** used to build the search tree and reconstruct solution paths.
+
+---
+
+**compare_performance.py**
+
+Main driver program that:
+
+1. Initializes the water jug problem
+2. Runs all search algorithms
+3. Compares their performance
+4. Prints results including:
+   - solution path
+   - nodes explored
+   - execution time
+
+---
+
+# Water Jug Problem
+
+The system starts with:
+
+```
+Jug 1 = 0L
+Jug 2 = 0L
+```
+
+Allowed actions:
+
+- Fill Jug 1
+- Fill Jug 2
+- Empty Jug 1
+- Empty Jug 2
+- Pour Jug 1 → Jug 2
+- Pour Jug 2 → Jug 1
+
+Goal state:
+
+```
+Either jug contains 4 liters of water
+```
+
+---
+
+# Implemented Algorithms
+
+## Breadth-First Search (BFS)
+
+Explores the search tree **level by level**.
+
+Properties:
+
+- Complete
+- Optimal for equal step costs
+- Higher memory usage
+
+---
+
+## Depth-First Search (DFS)
+
+Explores **deepest nodes first** before backtracking.
+
+Properties:
+
+- Low memory usage
+- Not guaranteed optimal
+- May get stuck in deep paths
+
+---
+
+## Depth-Limited Search (DLS)
+
+DFS with a **depth limit**.
+
+Prevents infinite depth exploration.
+
+Example in this project:
+
+```
+limit = 4
+```
+
+---
+
+## Iterative Deepening Search (IDS)
+
+Combines advantages of **BFS and DFS**.
+
+Steps:
+
+1. Run DLS with depth 0
+2. Run DLS with depth 1
+3. Continue increasing depth until solution found
+
+Properties:
+
+- Complete
+- Optimal
+- Lower memory than BFS
+
+---
+
+# Running the Program
+
+Run the comparison script:
+
+```bash
+python compare_performance.py
+```
+
+---
+
+# Example Output
+
+```
+Initializing Milk and Water Jug Problem
+Jug 1 Capacity: 5L
+Jug 2 Capacity: 3L
+Target: 4L in either jug
+
+Starting Performance Comparison...
+
+==========================================
+ Breadth-First Search (BFS)
+==========================================
+Result: Solution found in 6 steps.
+Path taken:
+  > Fill Jug 2 => Current State: (0, 3)
+  > Pour J2 -> J1 => Current State: (3, 0)
+  > Fill Jug 2 => Current State: (3, 3)
+  > Pour J2 -> J1 => Current State: (5, 1)
+  > Empty Jug 1 => Current State: (0, 1)
+  > Pour J2 -> J1 => Current State: (1, 0)
+
+Nodes Explored: XX
+Time Taken:     X.XXXX seconds
+```
+
+The program prints results for:
+
+- BFS
+- DFS
+- DLS
+- IDS
+
+---
+
+# Requirements
+
+Python **3.x**
+
+Standard Python libraries used:
+
+- `time`
+- `collections`
+
+No external dependencies required.
+
+---
+
+# How the Solution Path Works
+
+Each node stores:
+
+```
+state
+parent node
+action taken
+depth
+```
+
+When a solution is found, the program reconstructs the path using:
+
+```
+node.path()
+```
+
+This traces back from the goal node to the initial state.
+
+---
