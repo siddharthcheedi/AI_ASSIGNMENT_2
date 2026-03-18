@@ -1,3 +1,6 @@
 [submodule "AQI"]
 	path = AQI
 	url = https://github.com/siddharthcheedi/AQI-AI-PROJECT
+[submodule "AI_ASSIGNMENT_3"]
+	path = AI_ASSIGNMENT_3
+	url = https://github.com/siddharthcheedi/AI_ASSIGNMENT_3
