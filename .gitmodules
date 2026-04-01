@@ -4,3 +4,6 @@
 [submodule "AI_ASSIGNMENT_3"]
 	path = AI_ASSIGNMENT_3
 	url = https://github.com/siddharthcheedi/AI_ASSIGNMENT_3
+[submodule "AI_ASSIGNMENT_4"]
+	path = AI_ASSIGNMENT_4
+	url = https://github.com/siddharthcheedi/AI_ASSIGNMENT_4.git
